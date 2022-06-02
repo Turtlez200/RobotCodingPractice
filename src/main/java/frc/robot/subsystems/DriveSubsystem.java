@@ -72,8 +72,8 @@ public class DriveSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("RIGHT MOTOR POSITION", getLeftPosition());
   }
 
-  public void set(double lSpeed, double rSpeed){
-    DRIVE.arcadeDrive(lSpeed, rSpeed);
+  public void set(double lYSpeed, double rXSpeed){
+    DRIVE.arcadeDrive(lYSpeed, rXSpeed);
   }
 
   public void stop(){
