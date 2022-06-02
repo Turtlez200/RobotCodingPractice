@@ -24,7 +24,7 @@ public class DriveSubsystem extends SubsystemBase {
   private WPI_TalonFX rightDriveF1=new WPI_TalonFX(5);
   private WPI_TalonFX rightDriveF2=new WPI_TalonFX(6);
 
-  DifferentialDrive DRIVE=new DifferentialDrive(leftDrivePrimary, rightDrivePrimary);
+  public final DifferentialDrive DRIVE;
 
 
   public DriveSubsystem() {
@@ -58,7 +58,7 @@ public class DriveSubsystem extends SubsystemBase {
 
     //can cap voltage, or many other things, check CTRE docs
 
-     
+     DRIVE=new DifferentialDrive(leftDrivePrimary, rightDrivePrimary);
 
   }
 
