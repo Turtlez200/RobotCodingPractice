@@ -7,11 +7,13 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ConveyerSubsystem extends SubsystemBase {
 
-  private WPI_TalonFX conveyerMotor=new WPI_TalonFX(13);
+  private WPI_TalonFX conveyerMotor = new WPI_TalonFX(13);
+  private double currConveyor = 0;
 
   /** Creates a new ConveyerSubsystem. */
   public ConveyerSubsystem() {
@@ -20,14 +22,16 @@ public class ConveyerSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putNumber("CONVEYOR MOTOR SPEED", currConveyor);
   }
 
-  public void set(double cSpeed){
+  public void set(double cSpeed) {
     conveyerMotor.set(ControlMode.PercentOutput, cSpeed);
+    currConveyor = cSpeed;
   }
 
-  public void stop(){
+  public void stop() {
     conveyerMotor.set(ControlMode.PercentOutput, 0);
+    currConveyor = 0;
   }
 }
