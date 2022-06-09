@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Autons.DriveBackwardAuto;
 import frc.robot.Autons.DriveForwardAuto;
+import frc.robot.Autons.Turn90Auton;
 import frc.robot.Utilities.SpectrumAxisButton;
 import frc.robot.Utilities.SpectrumAxisButton.ThresholdType;
 import frc.robot.commands.DefaultDriveCommand;
@@ -79,6 +81,6 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new DriveForwardAuto(DRIVE_SUBSYSTEM);
+    return new Turn90Auton(DRIVE_SUBSYSTEM);
   }
 }

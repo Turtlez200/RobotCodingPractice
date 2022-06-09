@@ -8,13 +8,12 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.AutoDrive;
 import frc.robot.subsystems.DriveSubsystem;
 
-public class DriveForwardAuto extends SequentialCommandGroup {
-  /** Creates a new DriveForwardAuto. */
-  public DriveForwardAuto(DriveSubsystem DRIVE_SUBSYSTEM) {
+public class Turn90Auton extends SequentialCommandGroup {
+  /** Creates a new Turn90Auton. */
+
+  public Turn90Auton(DriveSubsystem DRIVE_SUBSYSTEM) {
     addCommands(
-      new AutoDrive(DRIVE_SUBSYSTEM, 0.5, 0).withTimeout(1)
-      //time it to do 90 degrerese
+      new AutoDrive(DRIVE_SUBSYSTEM, 0, 0.6035).withTimeout(1)
     );
   }
-
 }
