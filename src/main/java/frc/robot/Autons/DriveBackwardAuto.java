@@ -19,6 +19,6 @@ public class DriveBackwardAuto extends SequentialCommandGroup {
     addCommands(
         new ParallelCommandGroup(
             new AutoDrive(DRIVE_SUBSYSTEM, 0.25, 0),
-            new AutoIntake(INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, -1, -0.75, 0.5)).withTimeout(3));
+            new AutoIntake(INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, -1, -0.75, 0.5)).withTimeout(1));
   }
 }
