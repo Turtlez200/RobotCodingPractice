@@ -57,19 +57,19 @@ public class AutoTurn extends CommandBase {
         if (Degrees<0){ //left
           if (DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft-200 || DRIVE_SUBSYSTEM.getRightPosition()<encoderDegreesRight+200)
           {
-              DRIVE_SUBSYSTEM.set(0, -0.1);
+              DRIVE_SUBSYSTEM.set(0, -0.5);
           }
           if (DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft+200 || DRIVE_SUBSYSTEM.getRightPosition()<encoderDegreesRight-200){
-            DRIVE_SUBSYSTEM.set(0, 0.1);
+            DRIVE_SUBSYSTEM.set(0, 0.5);
           }
         }
         else{
           if (DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft-200 || DRIVE_SUBSYSTEM.getRightPosition()<encoderDegreesRight+200)
           {
-              DRIVE_SUBSYSTEM.set(0, 0.1);
+              DRIVE_SUBSYSTEM.set(0, 0.5);
           }
           if (DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft+200 || DRIVE_SUBSYSTEM.getRightPosition()<encoderDegreesRight-200){
-            DRIVE_SUBSYSTEM.set(0, -0.1);
+            DRIVE_SUBSYSTEM.set(0, -0.5);
           }
         }
     }
