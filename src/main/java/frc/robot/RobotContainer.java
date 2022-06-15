@@ -16,6 +16,7 @@ import frc.robot.Autons.Turn90Auton;
 import frc.robot.Utilities.SpectrumAxisButton;
 import frc.robot.Utilities.SpectrumAxisButton.ThresholdType;
 import frc.robot.commands.DefaultDriveCommand;
+import frc.robot.commands.ResetCounterCommand;
 import frc.robot.commands.RunConveyerCommand;
 import frc.robot.commands.RunIntakeCommand;
 import frc.robot.commands.RunShooterCommand;
@@ -66,7 +67,8 @@ public class RobotContainer {
     L1_BUMPER.whileHeld(new RunIntakeCommand(INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, true));
     R1_BUMPER.whileHeld(new RunIntakeCommand(INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, false));
     L2_TRIGGER.toggleWhenPressed(new RunShooterCommand(SHOOTER_SUBSYSTEM));
-    R2_TRIGGER.whileHeld(new RunConveyerCommand(CONVEYER_SUBSYSTEM, INTAKE_SUBSYSTEM));    
+    R2_TRIGGER.whileHeld(new RunConveyerCommand(CONVEYER_SUBSYSTEM, INTAKE_SUBSYSTEM)); 
+    X_BUTTON.whenPressed(new ResetCounterCommand(DRIVE_SUBSYSTEM));   
 
   }
 
@@ -82,6 +84,10 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new BackwardsShootAuto(DRIVE_SUBSYSTEM, INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, SHOOTER_SUBSYSTEM);
+    return new Turn90Auton(DRIVE_SUBSYSTEM);
+  }
+
+  public void resetCounter(){
+    DRIVE_SUBSYSTEM.resetPosition();
   }
 }
