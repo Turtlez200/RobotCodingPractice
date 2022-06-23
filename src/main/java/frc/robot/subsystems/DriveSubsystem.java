@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,6 +24,7 @@ public class DriveSubsystem extends SubsystemBase {
   private WPI_TalonFX rightDrivePrimary=new WPI_TalonFX(4);
   private WPI_TalonFX rightDriveF1=new WPI_TalonFX(5);
   private WPI_TalonFX rightDriveF2=new WPI_TalonFX(6);
+
 
   public final DifferentialDrive DRIVE;
 
