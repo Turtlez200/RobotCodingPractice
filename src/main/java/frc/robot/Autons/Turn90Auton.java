@@ -15,7 +15,7 @@ public class Turn90Auton extends SequentialCommandGroup {
   public Turn90Auton(DriveSubsystem DRIVE_SUBSYSTEM) {
     addCommands(
       //new AutoDrive(DRIVE_SUBSYSTEM, 0, 0.6035).withTimeout(1)
-      new AutoTurnGriffin(DRIVE_SUBSYSTEM, 90)
+      new AutoTurnGriffin(DRIVE_SUBSYSTEM, -45)
     );
   }
 }

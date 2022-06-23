@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class AutoTurnGriffin extends CommandBase {
@@ -31,25 +32,39 @@ public class AutoTurnGriffin extends CommandBase {
   @Override
   public void initialize() {
     DRIVE_SUBSYSTEM.resetPosition();
-    encoderDegreesLeft=100000;
-    encoderDegreesRight=93897;
+    encoderDegreesLeft=Constants.LeftMotor360ETicks*(Math.abs(Degrees)/360);
+    encoderDegreesRight=Constants.RightMotor360ETicks*(double)(Math.abs(Degrees)/360.0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      
-      if (DRIVE_SUBSYSTEM.getLeftPosition()<encoderDegreesLeft+100 && DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft-100){
-        finished=true;
-      }
-      else if (DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft+100){
-        DRIVE_SUBSYSTEM.set(0, -0.6);
+      if (Math.abs(Degrees)!=Degrees){
+        if (DRIVE_SUBSYSTEM.getRightPosition()<encoderDegreesRight+100 && DRIVE_SUBSYSTEM.getRightPosition()>encoderDegreesRight-100){
+          finished=true;
+        }
+        else if (DRIVE_SUBSYSTEM.getRightPosition()>encoderDegreesRight+100){
+          DRIVE_SUBSYSTEM.set(0, 0.6);
+        }
+        else{
+          DRIVE_SUBSYSTEM.set(0, -0.6);
+        }
       }
       else{
-        DRIVE_SUBSYSTEM.set(0, 0.6);
+        if (DRIVE_SUBSYSTEM.getLeftPosition()<encoderDegreesLeft+100 && DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft-100){
+          finished=true;
+        }
+        else if (DRIVE_SUBSYSTEM.getLeftPosition()>encoderDegreesLeft+100){
+          DRIVE_SUBSYSTEM.set(0, -0.6);
+        }
+        else{
+          DRIVE_SUBSYSTEM.set(0, 0.6);
       }
+    }
+      
       
       SmartDashboard.putNumber("encoderDegreesLeft: ", encoderDegreesLeft);
+      SmartDashboard.putNumber("encoderDegreesRight: ", encoderDegreesRight);
       SmartDashboard.putBoolean("finshed: ", finished);
       
   }
