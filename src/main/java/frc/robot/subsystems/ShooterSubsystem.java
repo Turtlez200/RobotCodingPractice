@@ -22,7 +22,7 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorPrimary.configFactoryDefault();
     shooterMotor1.configFactoryDefault();
 
-    shooterMotor1.follow(shooterMotor1);
+    shooterMotor1.follow(shooterMotorPrimary);
     shooterMotor1.setInverted(InvertType.InvertMotorOutput);
   }
 

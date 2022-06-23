@@ -8,17 +8,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ShooterSubsystemClosedLoop;
 
-public class RunShooterCommand extends CommandBase {
+public class RunShooterCommandClosedLoop extends CommandBase {
 
-  private ShooterSubsystem SHOOTER_SUBSYSTEM;
+  private ShooterSubsystemClosedLoop SHOOTER_SUBSYSTEM_CLOSED_LOOP;
 
 
   /** Creates a new RunShooterCommand. */
-  public RunShooterCommand(ShooterSubsystem shooter) {
+  public RunShooterCommandClosedLoop(ShooterSubsystemClosedLoop shooter) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.SHOOTER_SUBSYSTEM=shooter;
+    this.SHOOTER_SUBSYSTEM_CLOSED_LOOP=shooter;
 
-    addRequirements(SHOOTER_SUBSYSTEM);
+    addRequirements(SHOOTER_SUBSYSTEM_CLOSED_LOOP);
   }
 
   // Called when the command is initially scheduled.
@@ -28,13 +28,13 @@ public class RunShooterCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    SHOOTER_SUBSYSTEM.set(0.9);
+    SHOOTER_SUBSYSTEM_CLOSED_LOOP.setShooterSpeed(ShooterSubsystemClosedLoop.targetVelocity);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    SHOOTER_SUBSYSTEM.stop();
+    SHOOTER_SUBSYSTEM_CLOSED_LOOP.stopShooter();
   }
 
   // Returns true when the command should end.

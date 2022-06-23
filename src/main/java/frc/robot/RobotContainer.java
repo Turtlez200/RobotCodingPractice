@@ -21,10 +21,12 @@ import frc.robot.commands.ResetCounterCommand;
 import frc.robot.commands.RunConveyerCommand;
 import frc.robot.commands.RunIntakeCommand;
 import frc.robot.commands.RunShooterCommand;
+import frc.robot.commands.RunShooterCommandClosedLoop;
 import frc.robot.subsystems.ConveyerSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.ShooterSubsystemClosedLoop;
 import frc.robot.subsystems.GyroSubsystem;
 
 /**
@@ -52,6 +54,8 @@ public class RobotContainer {
 
   private ShooterSubsystem SHOOTER_SUBSYSTEM = new ShooterSubsystem();
 
+  private ShooterSubsystemClosedLoop SHOOTER_SUBSYSTEM_CLOSED_LOOP=new ShooterSubsystemClosedLoop();
+
   private ConveyerSubsystem CONVEYER_SUBSYSTEM = new ConveyerSubsystem();
 
   private GyroSubsystem GYRO_SUBSYSTEM = new GyroSubsystem();
@@ -76,7 +80,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     L1_BUMPER.whileHeld(new RunIntakeCommand(INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, true));
     R1_BUMPER.whileHeld(new RunIntakeCommand(INTAKE_SUBSYSTEM, CONVEYER_SUBSYSTEM, false));
-    L2_TRIGGER.toggleWhenPressed(new RunShooterCommand(SHOOTER_SUBSYSTEM));
+    //L2_TRIGGER.toggleWhenPressed(new RunShooterCommand(SHOOTER_SUBSYSTEM));
+    L2_TRIGGER.toggleWhenPressed(new RunShooterCommandClosedLoop(SHOOTER_SUBSYSTEM_CLOSED_LOOP));
+
     R2_TRIGGER.whileHeld(new RunConveyerCommand(CONVEYER_SUBSYSTEM, INTAKE_SUBSYSTEM));
     X_BUTTON.whenPressed(new ResetCounterCommand(DRIVE_SUBSYSTEM));
 
