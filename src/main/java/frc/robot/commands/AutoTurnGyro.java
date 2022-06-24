@@ -16,6 +16,7 @@ public class AutoTurnGyro extends CommandBase {
   int Degree;
   boolean finished;
   int coefficient;
+  double speed;
 
   public AutoTurnGyro(GyroSubsystem g, DriveSubsystem d, int deg) {
     GYRO_SUBSYSTEM = g;
@@ -43,9 +44,10 @@ public class AutoTurnGyro extends CommandBase {
   public void execute() {
     if (GYRO_SUBSYSTEM.getHeading() >= Degree)
       finished = true;
-    else
-      DRIVE_SUBSYSTEM.set(0, 0.6 * coefficient);
-
+    else {
+      speed = Math.max((Degree - GYRO_SUBSYSTEM.getHeading()) * (0.6 / Degree), 0.2);
+      DRIVE_SUBSYSTEM.set(0, -speed * coefficient);
+    }
   }
 
   // Called once the command ends or is interrupted.
